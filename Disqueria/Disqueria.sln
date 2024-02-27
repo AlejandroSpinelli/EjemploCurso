@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disqueria", "Disqueria\Disqueria.csproj", "{B248B3B0-8F11-4497-8DF7-0344242A035D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{02BFF8FA-CED5-42A3-99D2-8D1A2774B9F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{E4E67AE6-3B66-46C5-B102-D4A9A55F80BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B248B3B0-8F11-4497-8DF7-0344242A035D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B248B3B0-8F11-4497-8DF7-0344242A035D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B248B3B0-8F11-4497-8DF7-0344242A035D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B248B3B0-8F11-4497-8DF7-0344242A035D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02BFF8FA-CED5-42A3-99D2-8D1A2774B9F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02BFF8FA-CED5-42A3-99D2-8D1A2774B9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02BFF8FA-CED5-42A3-99D2-8D1A2774B9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02BFF8FA-CED5-42A3-99D2-8D1A2774B9F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E67AE6-3B66-46C5-B102-D4A9A55F80BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E67AE6-3B66-46C5-B102-D4A9A55F80BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E67AE6-3B66-46C5-B102-D4A9A55F80BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E67AE6-3B66-46C5-B102-D4A9A55F80BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5F3319D-6F08-4BE6-BE23-FA738CB332F8}
+	EndGlobalSection
+EndGlobal
