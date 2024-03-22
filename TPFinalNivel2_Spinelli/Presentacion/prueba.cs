@@ -17,7 +17,7 @@ namespace Presentacion
     {
         UserLog Usuario = null;
         UserLog Administrador = null;
-        //holi
+        
 
         List<Articulo> Articulo = null;
         public prueba(UserLog usuario)
