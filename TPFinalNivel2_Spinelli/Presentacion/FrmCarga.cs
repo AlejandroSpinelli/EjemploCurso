@@ -96,9 +96,21 @@ namespace Presentacion
             articulo.marca = (Marca)cbxMarca.SelectedItem;
             articulo.Precio = decimal.Parse(txbPrecio.Text);
 
-            
-            
+            if (txbPrecio.Text.Contains("."))
                 
+                {
+                    MessageBox.Show("Ingrese un precio!");
+                    
+                }
+
+            if (!(solonumeros(txbPrecio.Text)))
+            {
+                MessageBox.Show("Ingrese solo números para precios y sin puntos!");
+              
+            }
+
+
+
 
             if (articulo.Id != 0)
             {

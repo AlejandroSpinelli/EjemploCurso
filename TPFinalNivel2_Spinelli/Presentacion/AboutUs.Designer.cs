@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutUs));
             this.pbxabout = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxabout)).BeginInit();
@@ -50,7 +51,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(604, 54);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Este es un trabajo para el curso de C# de Maximiliano Sar Fernandez realizado\r\npo" +
+            this.label1.Text = "Este es un trabajo para el curso de C# de Maximiliano Sar Fernández realizado\r\npo" +
     "r Alejandro Spinelli, todos los derechos quedan reservados a los antes \r\nmencion" +
     "ados.\r\n";
             // 
@@ -61,6 +62,7 @@
             this.ClientSize = new System.Drawing.Size(784, 161);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbxabout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 200);
             this.MinimizeBox = false;

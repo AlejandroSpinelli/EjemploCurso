@@ -31,7 +31,10 @@ namespace Negocio
                 aux.categoria.Descripcion = (string)datos.Lector["Categoria"];
                 aux.marca = new Marca();
                 aux.marca.Descripcion = (string)datos.Lector["Marca"];
-                aux.Precio = (decimal)datos.Lector["Precio"];
+                //fue la unica forma que encontre para quitar los ceros de los decimal.
+                decimal precio= (decimal)datos.Lector["Precio"];
+                decimal preciocorregido= Math.Round(precio, 0);
+                aux.Precio = preciocorregido;
 
                 lista.Add(aux);
             }
@@ -251,7 +254,12 @@ namespace Negocio
                     aux.categoria.Descripcion = (string)datos.Lector["Categoria"];
                     aux.marca = new Marca();
                     aux.marca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+                    decimal precio = (decimal)datos.Lector["Precio"];
+                    decimal preciocorregido = Math.Round(precio, 0);
+                    aux.Precio = preciocorregido;
+
+                    
 
                     lista.Add(aux);
                 }
@@ -270,6 +278,68 @@ namespace Negocio
             }
 
 
+        }
+
+        public void CargarFavorito(Articulo Articulo, int id)
+        {
+            AccesoADatos datos = new AccesoADatos();
+
+            datos.establecerConsulta("insert into FAVORITOS (IdUser,IdArticulo) values ('"+id+"','" + Articulo.Id+"') ");
+            datos.ejecutaraccion();
+        }
+
+        public List<Articulo>MostrarFavoritos(int id)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            datos.establecerConsulta("select A.Id as Id,Codigo,Nombre,A.Descripcion as Descripcion,ImagenUrl,IdCategoria,IdMarca,C.Descripcion as Categoria, M.Descripcion as Marca,Precio from ARTICULOS A,MARCAS M,CATEGORIAS C,FAVORITOS F where F.IdUser='"+id+ "' and F.IdArticulo=A.Id and A.IdMarca=M.Id and A.IdCategoria=C.Id ");
+            datos.establecerlectura();
+
+            while (datos.Lector.Read())
+            {
+                Articulo aux = new Articulo();
+                aux.Id = (int)datos.Lector["Id"];
+                aux.Codigo = (string)datos.Lector["Codigo"];
+                aux.Nombre = (string)datos.Lector["Nombre"];
+                aux.Descripcion = (string)datos.Lector["Descripcion"];
+                aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                aux.IdCategoria = (int)datos.Lector["IdCategoria"];
+                aux.IdMarca = (int)datos.Lector["IdMarca"];
+                aux.categoria = new Categoria();
+                aux.categoria.Descripcion = (string)datos.Lector["Categoria"];
+                aux.marca = new Marca();
+                aux.marca.Descripcion = (string)datos.Lector["Marca"];
+                //fue la unica forma que encontre para quitar los ceros de los decimal.
+                decimal precio = (decimal)datos.Lector["Precio"];
+                decimal preciocorregido = Math.Round(precio, 0);
+                aux.Precio = preciocorregido;
+
+                lista.Add(aux);
+            }
+            datos.cerrarconexion();
+            return lista;
+
+
+           
+        }
+
+        public void EliminarFavorito(Articulo Articulo,UserLog user)
+        {
+            AccesoADatos datos = new AccesoADatos();
+
+            try
+            {
+                datos.establecerConsulta("delete from FAVORITOS where idArticulo='"+Articulo.Id+"' and IdUser='"+user.Id+"'");
+                datos.ejecutaraccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
         }
     }
 }
