@@ -22,8 +22,19 @@ namespace Pokedex_web
 
         protected void dgvPokemon_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string nombre= dgvPokemon.SelectedDataKey.Value.ToString();
-            Response.Redirect("Default.aspx?nombre=" +  nombre);
+            string Id= dgvPokemon.SelectedDataKey.Value.ToString();
+            Response.Redirect("Pagina 2.aspx?Id=" +  Id);
+        }
+
+        protected void dgvPokemon_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvPokemon.PageIndex= e.NewPageIndex;
+            dgvPokemon.DataBind();
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Pagina 2.aspx");
         }
     }
 }
