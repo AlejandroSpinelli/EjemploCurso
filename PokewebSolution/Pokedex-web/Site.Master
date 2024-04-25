@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Pokedex_web.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PkedexOnline</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="container">
+
+                <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Mi web</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Pagina 1.aspx">Pokedex</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Pagina 2.aspx">Pagina 2</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Gridview.aspx">Ej Gridview</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Foreach.aspx">Ej Foreach</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Repeater.aspx">Ej Repeater</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </nav>
+
+
+
+            </div>
+
+            <div class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+
+
+        </div>
+    </form>
+</body>
+</html>
