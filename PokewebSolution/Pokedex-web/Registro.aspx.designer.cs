@@ -11,7 +11,7 @@ namespace Pokedex_web
 {
 
 
-    public partial class Default
+    public partial class Registro
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace Pokedex_web
         protected global::System.Web.UI.WebControls.Label lblUser;
 
         /// <summary>
-        /// Control txbbuser.
+        /// Control txbUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbbuser;
+        protected global::System.Web.UI.WebControls.TextBox txbUser;
 
         /// <summary>
         /// Control lblPass.
@@ -51,21 +51,12 @@ namespace Pokedex_web
         protected global::System.Web.UI.WebControls.TextBox txbPass;
 
         /// <summary>
-        /// Control chbpass.
+        /// Control btnregistrarse.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chbpass;
-
-        /// <summary>
-        /// Control btnIngresar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresar;
+        protected global::System.Web.UI.WebControls.Button btnregistrarse;
     }
 }

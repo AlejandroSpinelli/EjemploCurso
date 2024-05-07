@@ -16,7 +16,8 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select Id, Descripcion From ELEMENTOS");
+                datos.SetearProcedimiento("listartipo");
+                //datos.setearConsulta("Select Id, Descripcion From ELEMENTOS"); 
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

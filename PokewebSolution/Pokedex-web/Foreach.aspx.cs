@@ -14,7 +14,13 @@ namespace Pokedex_web
         protected void Page_Load(object sender, EventArgs e)
         {
             PokemonNegocio negocio = new PokemonNegocio();
-            listapokemon = negocio.nuevometodo();
+            listapokemon = negocio.listarconsp();
+        }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            //string id=Session["pokeid"].ToString();
+            //Response.Redirect("Pagina 2.aspx?id=" + id);
         }
     }
 }

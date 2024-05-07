@@ -14,7 +14,7 @@ namespace Pokedex_web
         protected void Page_Load(object sender, EventArgs e)
         {
             PokemonNegocio negocio = new PokemonNegocio();
-            listapokemon = negocio.nuevometodo();
+            listapokemon = negocio.listarconsp();
 
             if (!IsPostBack)
             {
@@ -25,7 +25,8 @@ namespace Pokedex_web
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string nombre = ((Button)sender).CommandArgument;
+            string id = ((Button)sender).CommandArgument;
+            Response.Redirect("Pagina 2.aspx?id=" + id);
         }
     }
 }

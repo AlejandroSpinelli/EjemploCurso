@@ -14,8 +14,11 @@
             <div class="card">
                 <img src="<%:poke.UrlImagen %>" class="card-img-top" alt="<%:poke.Nombre %>">
                 <div class="card-body">
-                    <h5 class="card-title"><%:poke.Nombre %></h5>
-                    <p class="<%:poke.Descripcion %>"</p>
+                    <h3 class="card-title"><%:poke.Nombre %></h3>
+                    <h5 class=" card-subtitle">Tipo: <%:poke.Tipo.ToString() %></h5>
+                    <p class=" card-text"><%:poke.Descripcion %></p>
+                    <%--<%Session.Add("pokeid", poke.Id); %>--%>
+                    <asp:Button ID="btnEditar" CssClass="btn btn-dark" OnClick="btnEditar_Click" runat="server" Text="Button" />
                 </div>
             </div>
         </div>
