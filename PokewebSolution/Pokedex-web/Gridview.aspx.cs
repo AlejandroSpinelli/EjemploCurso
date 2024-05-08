@@ -16,6 +16,14 @@ namespace Pokedex_web
         public List<Pokemon> listapokemon { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!(Seguridad.esAdmin(Session["trainee"])))
+            {
+                Session.Add("Error", "Se requiere permisos de admin");
+                Response.Redirect("Error.aspx", false);
+            }
+
+
+
             PokemonNegocio negocio = new PokemonNegocio();
             listapokemon = negocio.listartodoconSp();
             Session.Add("listapokemon", listapokemon);

@@ -86,9 +86,11 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
+    <Content Include="Favoritos.aspx" />
     <Content Include="Foreach.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Gridview.aspx" />
+    <Content Include="Miperfil.aspx" />
     <Content Include="Pagina 1.aspx" />
     <Content Include="Pagina 2.aspx" />
     <Content Include="Registro.aspx" />
@@ -123,6 +125,13 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Foreach.aspx.cs">
       <DependentUpon>Foreach.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,6 +148,13 @@
     </Compile>
     <Compile Include="Gridview.aspx.designer.cs">
       <DependentUpon>Gridview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Miperfil.aspx.cs">
+      <DependentUpon>Miperfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Miperfil.aspx.designer.cs">
+      <DependentUpon>Miperfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pagina 1.aspx.cs">
       <DependentUpon>Pagina 1.aspx</DependentUpon>

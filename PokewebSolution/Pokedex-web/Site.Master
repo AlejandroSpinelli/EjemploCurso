@@ -29,11 +29,11 @@
                                     <%--<li class="nav-item">
                                         <a class="nav-link active" aria-current="page" href="Default.aspx">Login</a>
                                     </li>--%>
-                                    <li class="nav-item">
+                                    <%--<li class="nav-item">
                                         <a class="nav-link" href="Pagina 1.aspx">Pokedex</a>
-                                    </li>
+                                    </li>--%>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Pagina 2.aspx">Pagina 2</a>
+                                        <a class="nav-link" href="Pagina 2.aspx">Modificacion</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="Gridview.aspx">Ej Gridview</a>
@@ -41,20 +41,30 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="Foreach.aspx">Ej Foreach</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <%--<li class="nav-item">
                                         <a class="nav-link" href="Repeater.aspx">Ej Repeater</a>
-                                    </li>
+                                    </li>--%>
                                     <li class="nav-item">
                                         <a class="nav-link" href="Contacto.aspx">Contacto</a>
                                     </li>
+
+                                    <%if (mostrarBotones) { 
+                                        %>
                                     <li class="nav-item">
                                         <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-light" OnClick="btnIngresar_Click" Text="Ingresar" />
                                     </li>
                                     <li class="nav-item">
                                         <asp:Button ID="btnRegistrarse" class="btn btn-outline-success" OnClick="btnRegistrarse_Click" runat="server" Text="Registrarse" />
-
                                     </li>
+                                    <% }%>
+                                    <%if (!(mostrarBotones))
+                                        {%>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Miperfil.aspx">Perfil</a>
+                                    </li>
+                                    <asp:Button ID="btndesloguearse" runat="server" CssClass="btn btn-warning" OnClick="btndesloguearse_Click" Text="Desloguearse" />
 
+                                    <%} %>
                                 </ul>
                             </div>
                         </div>

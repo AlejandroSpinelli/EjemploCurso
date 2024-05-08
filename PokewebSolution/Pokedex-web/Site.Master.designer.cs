@@ -51,6 +51,15 @@ namespace Pokedex_web
         protected global::System.Web.UI.WebControls.Button btnRegistrarse;
 
         /// <summary>
+        /// Control btndesloguearse.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btndesloguearse;
+
+        /// <summary>
         /// Control ContentPlaceHolder1.
         /// </summary>
         /// <remarks>

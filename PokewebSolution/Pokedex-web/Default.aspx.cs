@@ -14,13 +14,13 @@ namespace Pokedex_web
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario user = (Usuario)Session["Usuario"];
-            if (user != null)
-            {
-                txbbuser.Enabled = false;
-                txbPass.Enabled = false;
-                btnIngresar.Text = "Desloguearse";
-            }
+            //Usuario user = (Usuario)Session["Usuario"];
+            //if (user != null)
+            //{
+            //    txbbuser.Enabled = false;
+            //    txbPass.Enabled = false;
+            //    btnIngresar.Text = "Desloguearse";
+            //}
         }
         
         protected void chbpass_CheckedChanged(object sender, EventArgs e)
@@ -41,43 +41,91 @@ namespace Pokedex_web
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
-        { 
-            UsuarioNegocio negocio = new UsuarioNegocio();
-            Usuario usuario;
-            Usuario user = (Usuario)Session["Usuario"];
-
+        {
+            TraineeNegocio negocio = new TraineeNegocio();
+            Trainee trainee = new Trainee();
             try
             {
-                
-                if (user != null)
-                {
-                    Session.Remove("Usuario");
-                    Response.Redirect("Default.aspx", false);
+                trainee.mail = txbbuser.Text;
+                trainee.pass = txbPass.Text;
 
+                if (negocio.Login(trainee))
+                {
+                    Session.Add("Trainee", trainee);
+                    Response.Redirect("Miperfil.aspx", false);
                 }
                 else
                 {
-                    usuario = new Usuario(txbbuser.Text, txbPass.Text, false);
-                    if (negocio.Login(usuario))
-                    {
-                        Session.Add("Usuario", usuario);
-                        Response.Redirect("Pagina 1.aspx", false);
-                    }
-                    else
-                    {
-                        Session.Add("Error", "User o Pass Incorrecto");
-                        Response.Redirect("Error.aspx", false);
-                    }
+                    Session.Add("Error", "User o Pass incorrectos");
+                    Response.Redirect("Error.aspx", false);
                 }
-
 
             }
             catch (Exception ex)
             {
-
-                Session.Add("error", ex.ToString());
+                Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx", false);
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //UsuarioNegocio negocio = new UsuarioNegocio();
+            //Usuario usuario;
+            //Usuario user = (Usuario)Session["Usuario"];
+
+            //try
+            //{
+                
+            //    if (user != null)
+            //    {
+            //        Session.Remove("Usuario");
+            //        Response.Redirect("Default.aspx", false);
+
+            //    }
+            //    else
+            //    {
+            //        usuario = new Usuario(txbbuser.Text, txbPass.Text, false);
+            //        if (negocio.Login(usuario))
+            //        {
+            //            Session.Add("Usuario", usuario);
+            //            Response.Redirect("Pagina 1.aspx", false);
+            //        }
+            //        else
+            //        {
+            //            Session.Add("Error", "User o Pass Incorrecto");
+            //            Response.Redirect("Error.aspx", false);
+            //        }
+            //    }
+
+
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    Session.Add("error", ex.ToString());
+            //    Response.Redirect("Error.aspx", false);
+            //}
             
         }
     }

@@ -9,7 +9,7 @@ namespace dominio
     public class Trainee
     {
         public int id {  get; set; }
-        public string user {  get; set; }  
+        public string mail{  get; set; }  
         public string pass { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }

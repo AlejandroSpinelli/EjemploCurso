@@ -30,25 +30,25 @@ namespace negocio
             email = new MailMessage();
             email.From = new MailAddress("noresponder@alecito.com");
             //email.To.Add(emaildestino);
-            email.To.Add("useralecito@gmail.com");//quien va recibir el mail
+            email.To.Add(emaildestino);//quien va recibir el mail
             email.Subject = asunto;
-            email.IsBodyHtml = true;
-            email.Body = "<html>" +
-                "<head>" +
-                    "<style>" +
-                        "h1 {color: #000; font-size: 24px;}" + // Estilo básico para el encabezado h1
-                    "</style>" +
-                "</head>" +
-                "<body>" +
-                    "<h1>Responder al siguiente mail:</h1>" +
-                    "<h4>" + emaildestino.ToString() + "</h4>" +
-                    "<h3>"+ cuerpo + "</h3>"+// Contenido del correo electrónico
-                "</body>" +
-            "</html>";
+            email.IsBodyHtml = false;
+            //email.Body = "<html>" +
+            //    "<head>" +
+            //        "<style>" +
+            //            "h1 {color: #000; font-size: 24px;}" + // Estilo básico para el encabezado h1
+            //        "</style>" +
+            //    "</head>" +
+            //    "<body>" +
+            //        "<h1>Responder al siguiente mail:</h1>" +
+            //        "<h4>" + emaildestino.ToString() + "</h4>" +
+            //        "<h3>"+ cuerpo + "</h3>"+// Contenido del correo electrónico
+            //    "</body>" +
+            //"</html>";
 
 
 
-            //email.Body = cuerpo;
+            email.Body = cuerpo;
         }
 
         public void enviarMail()
