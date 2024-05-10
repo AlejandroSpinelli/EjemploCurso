@@ -4,10 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <hr />
-    <asp:ScriptManager runat="server" />
+    
     <h1>Mi perfil</h1>
-    <asp:UpdatePanel runat="server">
-        <ContentTemplate>
+    
             <div class="row">
                 <div class="col-4">
                     <div class="mb-3">
@@ -24,7 +23,7 @@
                     </div>
                     <div class="mb-3">
                         <asp:Label ID="lblfechanacimiento" runat="server" Text="Fecha de Nacimiento"></asp:Label>
-                        <asp:TextBox ID="txbFechanacimiento" CssClass=" form form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txbFechanacimiento" CssClass=" form form-control" runat="server" TextMode="Date"></asp:TextBox>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -43,6 +42,4 @@
                     <a href="Default.aspx">Salir</a>
                 </div>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
 </asp:Content>

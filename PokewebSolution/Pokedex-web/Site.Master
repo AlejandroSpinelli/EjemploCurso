@@ -48,8 +48,9 @@
                                         <a class="nav-link" href="Contacto.aspx">Contacto</a>
                                     </li>
 
-                                    <%if (mostrarBotones) { 
-                                        %>
+                                    <%if (mostrarBotones)
+                                        {
+                                    %>
                                     <li class="nav-item">
                                         <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-light" OnClick="btnIngresar_Click" Text="Ingresar" />
                                     </li>
@@ -63,7 +64,13 @@
                                         <a class="nav-link" href="Miperfil.aspx">Perfil</a>
                                     </li>
                                     <asp:Button ID="btndesloguearse" runat="server" CssClass="btn btn-warning" OnClick="btndesloguearse_Click" Text="Desloguearse" />
-
+                                    <%}%>
+                                    <asp:Image ID="ImgAvatar" Style="height: 40px; width: 40px; border-radius: 50%" runat="server" />
+                                    <%if (!(mostrarBotones))
+                                        { %>
+                                    <li class="nav-item align-content-center">
+                                        <asp:Label ID="lbluser" CssClass=" text-light-emphasis text" runat="server" Text=""></asp:Label>
+                                    </li>
                                     <%} %>
                                 </ul>
                             </div>

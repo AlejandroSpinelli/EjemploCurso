@@ -16,11 +16,36 @@ namespace Pokedex_web
 
             //Trainee trainee = (Trainee)Session["Trainee"] != null ? (Trainee)Session["Trainee"] : null;
 
-            
+            if (!(IsPostBack))
+            {
                 if (!(Seguridad.SessionActiva(Session["Trainee"])))
                 {
                     Response.Redirect("Default.aspx", false);
                 }
+                else
+                {
+                    Trainee user = ((Trainee)Session["Trainee"]);
+                    if (user.nombre != null || user.nombre != "")
+                    {
+                        txbNombre.Text = user.nombre;
+                    }
+                    if (user.apellido != null || user.nombre != "")
+                    {
+                        txbApellido.Text = user.apellido;
+                    }
+                    if (string.IsNullOrEmpty(user.urlImagen))
+                    {
+                        imgPerfil.ImageUrl= "~/Images/" + user.urlImagen;
+                    }
+                    if (user.fechaNacimiento != null)
+                    {
+                        txbFechanacimiento.Text = user.fechaNacimiento.ToString("dd-mm-yyyy");
+                    }
+                    txbEmail.Text = user.mail;
+                    txbEmail.Enabled = false;
+                }
+            }
+            
 
         }
 
@@ -28,12 +53,27 @@ namespace Pokedex_web
         {
             try
             {
+                //escribir img
+                TraineeNegocio negocio = new TraineeNegocio();
                 
-                string ruta = Server.MapPath("./Images/");
                 Trainee user = (Trainee)Session["Trainee"];
-                txtImg.PostedFile.SaveAs(ruta + "perfil-" + user.id + ".jpg");
-                Response.Redirect("Default.aspx", false);
 
+                if(txtImg.PostedFile.FileName != "")
+                {
+                    string ruta = Server.MapPath("./Images/");
+                    txtImg.PostedFile.SaveAs(ruta + "IMGPerfil-" + user.id + ".jpg");
+                    user.urlImagen = "IMGPerfil-" + user.id + ".jpg";
+                }
+                
+
+                user.nombre = txbNombre.Text;
+                user.apellido = txbApellido.Text;
+                user.fechaNacimiento=DateTime.Parse(txbFechanacimiento.Text);
+                negocio.actualizar(user);
+
+                //leer img
+                Image img = (Image)Master.FindControl("ImgAvatar");
+                img.ImageUrl = "~/Images/" + user.urlImagen;
             }
             catch (Exception ex)
             {
