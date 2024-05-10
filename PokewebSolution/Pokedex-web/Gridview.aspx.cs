@@ -45,6 +45,7 @@ namespace Pokedex_web
 
         protected void dgvPokemon_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            //este es el paginador
             dgvPokemon.PageIndex= e.NewPageIndex;
             dgvPokemon.DataBind();
         }

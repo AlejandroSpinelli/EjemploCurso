@@ -5,7 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" />
     <h1 class="text-bg-dark">Grid View Pokemons</h1>
+
     <hr />
+
     <div class="row">
         <div class="col-6">
             <asp:Label ID="lblFiltro" runat="server" Text="Filtro Rapido"></asp:Label>
@@ -13,11 +15,12 @@
             <asp:CheckBox ID="chbFiltrorapido" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" runat="server" Text="Habilitar filtro avanzado" />
         </div>
     </div>
+
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <div class="row" >
+            <div class="row">
 
-                <%if (habilitarfiltrorapido) 
+                <%if (habilitarfiltrorapido)
                     {%>
 
                 <div class="col-3">
@@ -27,7 +30,7 @@
                         <asp:ListItem Text="Número" />
                         <asp:ListItem Text="Tipo" />
                     </asp:DropDownList>
-                    
+
 
                 </div>
 
@@ -60,6 +63,7 @@
     </asp:UpdatePanel>
 
     <hr />
+
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <asp:GridView ID="dgvPokemon" DataKeyNames="Id" runat="server" OnSelectedIndexChanged="dgvPokemon_SelectedIndexChanged"
@@ -75,5 +79,6 @@
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
+
     <asp:Button ID="btnAgregar" CssClass="btn btn-dark" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
 </asp:Content>

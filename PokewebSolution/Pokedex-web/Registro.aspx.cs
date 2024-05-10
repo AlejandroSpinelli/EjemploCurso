@@ -21,18 +21,18 @@ namespace Pokedex_web
         {
             try
             {
-                Trainee user= new Trainee();
-                user.mail=txbUser.Text;
-                user.pass=txbPass.Text;
+                Trainee trainee= new Trainee();
+                trainee.mail=txbUser.Text;
+                trainee.pass=txbPass.Text;
                 TraineeNegocio negocio= new TraineeNegocio();
 
-                //insertarnuevo devuelve un entero de un metodo que tiene dentro, ese entero es el id que le vamos a cargar al user
-                //luego al user lo cargamos en la session y asi luego del registro se inicia sesion automaticamente.
-               user.id= negocio.insetarnuevo(user);
-                Session.Add("Trainee", user);
+                //insertarnuevo devuelve un entero de un metodo que tiene dentro, ese entero es el id que le vamos a cargar el trainee
+                //luego al trainee lo cargamos en la session y asi luego del registro se inicia sesion automaticamente.
+                trainee.id= negocio.insetarnuevo(trainee);
+                Session.Add("Trainee", trainee);
                 
                 EmailServices services = new EmailServices();
-                services.armarCorreo(user.mail, "Bienvenida a la pagina", "Ya podes acceder con tu usuario y contraseña");
+                services.armarCorreo(trainee.mail, "Bienvenida a la pagina", "Ya podes acceder con tu usuario y contraseña");
                 services.enviarMail();
                 Response.Redirect("Default.aspx",false);
                

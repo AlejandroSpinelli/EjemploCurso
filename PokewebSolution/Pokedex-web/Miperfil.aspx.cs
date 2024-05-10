@@ -16,11 +16,30 @@ namespace Pokedex_web
 
             //Trainee trainee = (Trainee)Session["Trainee"] != null ? (Trainee)Session["Trainee"] : null;
 
-            if (!(Seguridad.SessionActiva(Session["Trainee"])))
-            {
-                Response.Redirect("Default.aspx", false);
-            }
+            
+                if (!(Seguridad.SessionActiva(Session["Trainee"])))
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
 
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                string ruta = Server.MapPath("./Images/");
+                Trainee user = (Trainee)Session["Trainee"];
+                txtImg.PostedFile.SaveAs(ruta + "perfil-" + user.id + ".jpg");
+                Response.Redirect("Default.aspx", false);
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error", ex.ToString());
+            }
         }
     }
 }
