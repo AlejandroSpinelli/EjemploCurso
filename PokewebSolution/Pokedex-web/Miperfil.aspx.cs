@@ -25,6 +25,9 @@ namespace Pokedex_web
                 else
                 {
                     Trainee user = ((Trainee)Session["Trainee"]);
+                    txbEmail.Text = user.mail;
+                    txbEmail.Enabled = false;
+                    
                     if (user.nombre != null || user.nombre != "")
                     {
                         txbNombre.Text = user.nombre;
@@ -33,16 +36,15 @@ namespace Pokedex_web
                     {
                         txbApellido.Text = user.apellido;
                     }
-                    if (string.IsNullOrEmpty(user.urlImagen))
+                    if (!string.IsNullOrEmpty(user.urlImagen))
                     {
                         imgPerfil.ImageUrl= "~/Images/" + user.urlImagen;
                     }
                     if (user.fechaNacimiento != null)
-                    {
-                        txbFechanacimiento.Text = user.fechaNacimiento.ToString("dd-mm-yyyy");
+                    { 
+                        txtFechanacimiento.Text= user.fechaNacimiento.ToString("yyyy-MM-dd");                   
                     }
-                    txbEmail.Text = user.mail;
-                    txbEmail.Enabled = false;
+                    
                 }
             }
             
@@ -51,6 +53,13 @@ namespace Pokedex_web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            //funciona con el requiredfieldvalidator de ASP
+            //si no valida cancela el guardado y ejecuta el mensaje de requerido
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
+
             try
             {
                 //escribir img
@@ -68,7 +77,7 @@ namespace Pokedex_web
 
                 user.nombre = txbNombre.Text;
                 user.apellido = txbApellido.Text;
-                user.fechaNacimiento=DateTime.Parse(txbFechanacimiento.Text);
+                user.fechaNacimiento=DateTime.Parse(txtFechanacimiento.Text);
                 negocio.actualizar(user);
 
                 //leer img

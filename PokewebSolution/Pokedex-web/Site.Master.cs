@@ -14,12 +14,13 @@ namespace Pokedex_web
         public bool mostrarBotones { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Page is Default || Page is Registro || Page is Error))
+            if (!(Page is Default || Page is Registro || Page is Error||Page is Error))
             {
                 if (!(Seguridad.SessionActiva(Session["Trainee"])))
                 {
                     Response.Redirect("Default.aspx", false);
                 }
+                
             }
 
 

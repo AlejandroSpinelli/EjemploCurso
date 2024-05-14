@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Miperfil.aspx.cs" Inherits="Pokedex_web.Miperfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .Validation{
+            color:red;
+            font-size:12px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <hr />
@@ -12,10 +18,12 @@
                     <div class="mb-3">
                         <asp:Label ID="lblemail" runat="server" Text="Email"></asp:Label>
                         <asp:TextBox ID="txbEmail" CssClass=" form form-control" runat="server" TextMode="Email"></asp:TextBox>
+                        <asp:RequiredFieldValidator ErrorMessage="El email es requerido" ControlToValidate="txbEmail" runat="server" />
                     </div>
                     <div class="mb-3">
                         <asp:Label ID="lblnombre" runat="server" Text="Nombre"></asp:Label>
                         <asp:TextBox ID="txbNombre" CssClass=" form form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="Validation" ErrorMessage="El nombre es requerido" ControlToValidate="txbNombre" runat="server" />
                     </div>
                     <div class="mb-3">
                         <asp:Label ID="lblapellido" runat="server" Text="Apellido"></asp:Label>
@@ -23,7 +31,7 @@
                     </div>
                     <div class="mb-3">
                         <asp:Label ID="lblfechanacimiento" runat="server" Text="Fecha de Nacimiento"></asp:Label>
-                        <asp:TextBox ID="txbFechanacimiento" CssClass=" form form-control" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="txtFechanacimiento" CssClass=" form form-control" runat="server" TextMode="Date"></asp:TextBox>
                     </div>
                 </div>
                 <div class="col-md-4">

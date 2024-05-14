@@ -78,13 +78,13 @@ namespace Pokedex_web
         protected global::System.Web.UI.WebControls.Label lblfechanacimiento;
 
         /// <summary>
-        /// Control txbFechanacimiento.
+        /// Control txtFechanacimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbFechanacimiento;
+        protected global::System.Web.UI.WebControls.TextBox txtFechanacimiento;
 
         /// <summary>
         /// Control lblimagen.

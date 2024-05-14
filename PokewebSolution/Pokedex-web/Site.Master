@@ -47,6 +47,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="Contacto.aspx">Contacto</a>
                                     </li>
+                                    
 
                                     <%if (mostrarBotones)
                                         {
@@ -64,7 +65,8 @@
                                         <a class="nav-link" href="Miperfil.aspx">Perfil</a>
                                     </li>
                                     <asp:Button ID="btndesloguearse" runat="server" CssClass="btn btn-warning" OnClick="btndesloguearse_Click" Text="Desloguearse" />
-                                    <%}%>
+                                    <%}
+                                    %>
                                     <asp:Image ID="ImgAvatar" Style="height: 40px; width: 40px; border-radius: 50%" runat="server" />
                                     <%if (!(mostrarBotones))
                                         { %>
