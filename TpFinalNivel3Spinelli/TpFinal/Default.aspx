@@ -7,13 +7,20 @@
     <hr />
     <style>
         .card {
-            display: inline-block; 
-            margin: 10px; 
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .favorito {
+            height: 40px;
+            width: 35px;
         }
 
         .imagen {
             max-height: 300px;
         }
+
+        
     </style>
 
     <asp:Repeater runat="server" ID="repRepeater">
@@ -24,6 +31,9 @@
                     <h5 class="card-title"><%#Eval("Nombre") %></h5>
                     <p class="card-text"><%#Eval("Descripcion") %></p>
                     <asp:Button ID="btnDetalles" class="btn btn-primary" OnClick="btnDetalles_Click" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" runat="server" Text="Detalles" />
+
+                    <asp:Button ID="btnFav" OnClick="btnFav_Click" CommandArgument='<%#Eval("Id")%>' runat="server" Text="&#9733;" CssClass="btn btn-warning" />
+
                 </div>
             </div>
         </ItemTemplate>

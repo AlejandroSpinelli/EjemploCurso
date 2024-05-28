@@ -25,6 +25,12 @@ namespace TpFinal
                 }
             }
 
+            if (!Seguridad.SessionActiva(Session["User"]))
+            {
+                imgUser.ImageUrl = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg";
+            }
+
+
             if (Seguridad.SessionActiva(Session["User"]))
             {
                 UserLog user = (UserLog)Session["user"];
@@ -32,7 +38,11 @@ namespace TpFinal
                 lblCorreo.Text = user.Email;
                 if (!string.IsNullOrEmpty(user.UrlImagenPerfil))
                 {
-                    imgUser.ImageUrl = "~/Images/" + ((UserLog)Session["User"]).UrlImagenPerfil;
+                    imgUser.ImageUrl = "~/Images/ImagenPerfil/" + ((UserLog)Session["User"]).UrlImagenPerfil;
+                }
+                else
+                {
+                    imgUser.ImageUrl = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg";
                 }
 
                 btnIgresar.Text = "Salir";

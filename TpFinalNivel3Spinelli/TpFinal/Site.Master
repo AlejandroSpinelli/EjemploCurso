@@ -13,8 +13,10 @@
     <style>
         .User {
             border-radius: 50%;
+            border-color:black;
+            border:thick;
             width: 50px;
-            height: auto;
+            height: 50px;
         }
     </style>
 
@@ -74,7 +76,7 @@
                                 </ul>
                                 <% }%>
 
-                                <asp:Image ID="imgUser" runat="server" CssClass="User" ImageUrl="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" />
+                                <asp:Image ID="imgUser" runat="server" CssClass="User" />
                                 <asp:Button ID="btnIgresar" CssClass="btn btn-outline-success" OnClick="btnIgresar_Click" runat="server" Text="Ingresar" />
 
                                 <%if (!Mostrar)

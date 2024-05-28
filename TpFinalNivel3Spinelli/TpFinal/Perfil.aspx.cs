@@ -34,7 +34,7 @@ namespace TpFinal
 
                     if (!string.IsNullOrEmpty(user.UrlImagenPerfil))
                     {
-                        imgPerfil.ImageUrl = user.UrlImagenPerfil;
+                        imgPerfil.ImageUrl = "~/Images/ImagenPerfil/" + user.UrlImagenPerfil;
                     }
 
                     Session["uaser"] = user;
@@ -50,7 +50,8 @@ namespace TpFinal
 
             try
             {
-                if(!string.IsNullOrEmpty(txbNombre.Text))
+
+                if (!string.IsNullOrEmpty(txbNombre.Text))
                 {
                     user.Nombre= txbNombre.Text;
                 }
@@ -58,13 +59,18 @@ namespace TpFinal
                 {
                     user.Apellido= txbApellido.Text;
                 }
-                if (!string.IsNullOrEmpty(txtImagen.Value.ToString()))
+                if (txtImagen.PostedFile.FileName != "")
                 {
-                    user.UrlImagenPerfil= txtImagen.Value.ToString();
+                    string ruta = Server.MapPath("./Images/ImagenPerfil/");
+                    txtImagen.PostedFile.SaveAs(ruta + "IMGPerfil-" + user.Id + ".jpg");
+                    user.UrlImagenPerfil = "IMGPerfil-" + user.Id + ".jpg";
                 }
                 negocio.Modificar(user);
                 Session.Add("Message", "Usuario modificado con exito!");
                 Response.Redirect("Error.aspx", false);
+
+                Image img = (Image)Master.FindControl("imgUser");
+                img.ImageUrl = "~/Images/ImagenPerfil/" + user.UrlImagenPerfil;
             }
             catch (Exception ex)
             {

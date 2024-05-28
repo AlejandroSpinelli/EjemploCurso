@@ -22,6 +22,7 @@ namespace TpFinal
                 repRepeater.DataSource = lista;
                 repRepeater.DataBind();
             }
+            
         }
 
         protected void btnDetalles_Click(object sender, EventArgs e)
@@ -29,6 +30,13 @@ namespace TpFinal
 
             string id = ((Button)sender).CommandArgument;
             Response.Redirect("DetallesProducto.aspx?id=" + id);
+        }
+
+        protected void btnFav_Click(object sender, EventArgs e)
+        {
+            Button btnFav = (Button)sender;
+
+            int id= int.Parse(btnFav.CommandArgument);
         }
     }
 }
