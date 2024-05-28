@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,28 @@ namespace TpFinal
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnIngresar_Click(object sender, EventArgs e)
+        {
+            LoginNegocio negocio = new LoginNegocio();
+            UserLog user = new UserLog();
+
+            user.Email = txbEmail.Text;
+            user.Contraseña = txbPass.Text;
+            
+            if (int.Parse(negocio.ingresar(user).Id.ToString()) != 0)
+            {
+                user = negocio.ingresar(user);
+                Session.Add("User", user);
+                Response.Redirect("default.aspx", false);
+
+            }
+            else
+            {
+                Session.Add("Error", "Ususario o contraseña incorrectos, vuelve a intentarlo");
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

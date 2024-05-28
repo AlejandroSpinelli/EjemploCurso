@@ -4,17 +4,104 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Market</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Content/bootstrap.css" rel="stylesheet" />
+
+    <style>
+        .User {
+            border-radius: 50%;
+            width: 50px;
+            height: auto;
+        }
+    </style>
+
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/zmKVy9V/vector-ecommerce-online-shopping-seamless-background-pattern.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <style>
+        .fondoContainer {
+            background-color: gainsboro;
+        }
+    </style>
+    <style>
+        .centrar {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+
+            <div class="container-lg">
+
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">MARKET</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
+                                </li>
+                                <%if (AdminOn)
+                                    { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Administracion.aspx">Administracion</a>
+                                    <%} %>
+                            </ul>
+                            <div class="d-flex" role="search">
+                                <%if (Mostrar)
+                                    {  %>
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Favoritos.aspx">Favoritos <span class="corazon">&#10084;</span></a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Perfil.aspx">Perfil</a>
+                                    <li class="nav-item">
+                                        <asp:Label ID="lblCorreo" CssClass="nav-link fw-bold" runat="server" Text=""></asp:Label>
+                                    </li>
+                                </ul>
+                                <% }%>
+
+                                <asp:Image ID="imgUser" runat="server" CssClass="User" ImageUrl="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" />
+                                <asp:Button ID="btnIgresar" CssClass="btn btn-outline-success" OnClick="btnIgresar_Click" runat="server" Text="Ingresar" />
+
+                                <%if (!Mostrar)
+                                    {  %>
+                                <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="btn btn-outline-primary" runat="server" Text="Regístrate" />
+                                <%} %>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+
+
+
+                <div class="container-fluid fondoContainer col-12">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </div>
+
+
+
+
+
+            </div>
         </div>
     </form>
 </body>

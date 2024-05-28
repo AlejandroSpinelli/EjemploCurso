@@ -17,16 +17,9 @@ namespace Negocio
             try
             {
                 AccesoADatos datos = new AccesoADatos();
-                datos.establecerConsulta("INSERT INTO USERS (email, pass, nombre, apellido, urlImagenPerfil, admin) VALUES (@Email, @Pass, @Nombre, @Apellido, @Url, @Admin)");
-
-
+                datos.establecerConsulta("INSERT INTO USERS (email, pass) VALUES (@Email, @Pass)");
                 datos.setearparametros("@Email", user.Email);
                 datos.setearparametros("@Pass", user.Contraseña);
-                datos.setearparametros("@Nombre", user.Nombre);
-                datos.setearparametros("@Apellido", user.Apellido);
-                datos.setearparametros("@Url", user.UrlImagenPerfil);
-                datos.setearparametros("@Admin", user.Admin);
-
                 datos.ejecutaraccion();
             }
             catch (Exception ex)
@@ -38,6 +31,30 @@ namespace Negocio
 
         }
 
+        public int insetarnuevo(UserLog nuevo)
+        {
+            AccesoADatos datos = new AccesoADatos();
+
+            try
+            {
+                datos.establecerConsulta("INSERT INTO USERS (email,pass) VALUES (@Email, @Pass)");
+                datos.setearparametros("@email", nuevo.Email);
+                datos.setearparametros("@pass", nuevo.Contraseña);
+                return datos.ejecutarAccionScalar();
+                
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarconexion();
+            }
+
+        }
         public bool verificarmail(string mail)
         {
             try
@@ -63,13 +80,14 @@ namespace Negocio
             }
         }
 
-        public UserLog ingresar(string usuario, string contraseña)
+        public UserLog ingresar(UserLog Usuario)
         {
             AccesoADatos datos = new AccesoADatos();
             UserLog user = new UserLog();
 
-            datos.establecerConsulta("SELECT id,email,pass,nombre,apellido,urlImagenPerfil,admin FROM USERS WHERE email='" + usuario + "' and pass='" + contraseña + "'");
-
+            datos.establecerConsulta("SELECT id,email,pass,nombre,apellido,urlImagenPerfil,admin FROM USERS WHERE email=@email and pass=@pass");
+            datos.setearparametros("@email", Usuario.Email);
+            datos.setearparametros("@pass", Usuario.Contraseña);
             datos.establecerlectura();
 
 
@@ -95,6 +113,7 @@ namespace Negocio
                     user.UrlImagenPerfil = (string)datos.Lector["urlImagenPerfil"];
                 }
                 user.Admin = (bool)datos.Lector["admin"];
+
             }
 
             datos.cerrarconexion();
@@ -128,14 +147,14 @@ namespace Negocio
             return user;
         }
 
-        public void Modificar(UserLog usuario, string Nombre, string Apellido, string Url)
+        public void Modificar(UserLog usuario)
         {
             AccesoADatos datos = new AccesoADatos();
             datos.establecerConsulta("update USERS set nombre=@nombre,apellido=@apellido,urlImagenPerfil=@url where id=@id");
 
-            datos.setearparametros("@nombre", Nombre);
-            datos.setearparametros("@apellido", Apellido);
-            datos.setearparametros("@url", Url);
+            datos.setearparametros("@nombre", usuario.Nombre);
+            datos.setearparametros("@apellido", usuario.Apellido);
+            datos.setearparametros("@url", usuario.UrlImagenPerfil ?? (object)DBNull.Value);
             datos.setearparametros("@id", usuario.Id);
 
             datos.ejecutaraccion();

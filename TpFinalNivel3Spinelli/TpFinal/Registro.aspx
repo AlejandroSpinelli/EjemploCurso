@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TpFinal.Login" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="TpFinal.Registro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Ingresa</h2>
 
-    <style>
+    <h2>Registrate</h2>
+    
+        <style>
         .fuente {
             font-size: 22px;
             font-family: Arial;
@@ -38,7 +38,7 @@
     <div class="col-2"></div>
     <div class="col-4">
         <div class="mb-3">
-            <asp:Button ID="btnIngresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" runat="server" Text="Ingresar" />
+            <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="btn btn-primary" runat="server" Text="Registrarse" />
             <a href="Default.aspx">Cancelar</a>
         </div>
     </div>
