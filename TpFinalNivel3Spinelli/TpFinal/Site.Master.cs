@@ -17,7 +17,7 @@ namespace TpFinal
         {
             Mostrar = false;
             AdminOn = false;
-            if (!(Page is Default || Page is Registro || Page is Error || Page is Login))
+            if (!(Page is Default || Page is Registro || Page is Error || Page is Login || Page is DetallesProducto))
             {
                 if (!Seguridad.SessionActiva(Session["User"]))
                 {

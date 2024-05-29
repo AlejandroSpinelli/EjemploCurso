@@ -19,21 +19,20 @@
         .imagen {
             max-height: 300px;
         }
-
-        
     </style>
 
     <asp:Repeater runat="server" ID="repRepeater">
         <ItemTemplate>
             <div class="card" style="width: 18rem;">
-                <img src="<%#Eval("UrlImagen") %>" class="card-img-top imagen" alt="<%#Eval("Nombre")%>">
+                <img src="<%#Eval("UrlImagen") %>" class="card-img-top imagen" id="imagencita" alt="<%#Eval("Nombre")%>" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20191026/ourmid/pngtree-shopping-basket-icon-png-image_1871519.jpg';" />
                 <div class="card-body">
                     <h5 class="card-title"><%#Eval("Nombre") %></h5>
                     <p class="card-text"><%#Eval("Descripcion") %></p>
                     <asp:Button ID="btnDetalles" class="btn btn-primary" OnClick="btnDetalles_Click" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" runat="server" Text="Detalles" />
-
-                    <asp:Button ID="btnFav" OnClick="btnFav_Click" CommandArgument='<%#Eval("Id")%>' runat="server" Text="&#9733;" CssClass="btn btn-warning" />
-
+                    <%if (mostrar)
+                        {  %>
+                    <asp:Button ID="btnFav" OnClick="btnFav_Click" CommandArgument='<%#Eval("Id")%>' runat="server" Text="Agregar &#9733;" CssClass="btn btn-warning" />
+                    <%} %>
                 </div>
             </div>
         </ItemTemplate>

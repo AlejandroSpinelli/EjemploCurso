@@ -324,11 +324,13 @@ namespace Negocio
 
         }
 
-        public void CargarFavorito(Articulo Articulo, int id)
+        public void CargarFavorito(int IdArticulo, int IdUser)
         {
             AccesoADatos datos = new AccesoADatos();
 
-            datos.establecerConsulta("insert into FAVORITOS (IdUser,IdArticulo) values ('" + id + "','" + Articulo.Id + "') ");
+            datos.establecerConsulta("insert into FAVORITOS (IdUser,IdArticulo) values (@iduser,@idarticulo)");
+            datos.setearparametros("@iduser",IdUser);
+            datos.setearparametros("@idarticulo",IdArticulo);
             datos.ejecutaraccion();
         }
 
@@ -366,13 +368,13 @@ namespace Negocio
 
         }
 
-        public void EliminarFavorito(Articulo Articulo, UserLog user)
+        public void EliminarFavorito(int idArticulo, int idUser)
         {
             AccesoADatos datos = new AccesoADatos();
 
             try
             {
-                datos.establecerConsulta("delete from FAVORITOS where idArticulo='" + Articulo.Id + "' and IdUser='" + user.Id + "'");
+                datos.establecerConsulta("delete from FAVORITOS where idArticulo='" + idArticulo + "' and IdUser='" + idUser + "'");
                 datos.ejecutaraccion();
             }
             catch (Exception ex)
