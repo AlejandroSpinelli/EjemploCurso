@@ -31,18 +31,47 @@ namespace Negocio
 
         }
 
-        public int insetarnuevo(UserLog nuevo)
+        public UserLog ingresar(UserLog Usuario)
         {
             AccesoADatos datos = new AccesoADatos();
-
+            UserLog user = new UserLog();
             try
             {
-                datos.establecerConsulta("INSERT INTO USERS (email,pass) VALUES (@Email, @Pass)");
-                datos.setearparametros("@email", nuevo.Email);
-                datos.setearparametros("@pass", nuevo.Contraseña);
-                return datos.ejecutarAccionScalar();
-                
 
+
+                datos.establecerConsulta("SELECT id,email,pass,nombre,apellido,urlImagenPerfil,admin FROM USERS WHERE email=@email and pass=@pass");
+                datos.setearparametros("@email", Usuario.Email);
+                datos.setearparametros("@pass", Usuario.Contraseña);
+                datos.establecerlectura();
+
+
+                if (datos.Lector.Read())
+                {
+                    user.Id = (int)datos.Lector["id"];
+                    user.Email = (string)datos.Lector["email"];
+                    user.Contraseña = (string)datos.Lector["pass"];
+
+                    if (!(DBNull.Value.Equals(datos.Lector["nombre"])))
+                    {
+                        user.Nombre = (string)datos.Lector["nombre"];
+                    }
+
+                    if (!(DBNull.Value.Equals(datos.Lector["apellido"])))
+                    {
+                        user.Apellido = (string)datos.Lector["apellido"];
+                    }
+
+
+                    if (!(DBNull.Value.Equals(datos.Lector["urlImagenPerfil"])))
+                    {
+                        user.UrlImagenPerfil = (string)datos.Lector["urlImagenPerfil"];
+                    }
+                    user.Admin = (bool)datos.Lector["admin"];
+
+                }
+
+                
+                return user;
             }
             catch (Exception ex)
             {
@@ -55,112 +84,29 @@ namespace Negocio
             }
 
         }
-        public bool verificarmail(string mail)
+
+        public void Modificar(UserLog usuario)
         {
             try
             {
-                UserLog usu = new UserLog();
                 AccesoADatos datos = new AccesoADatos();
-                datos.establecerConsulta("SELECT email FROM USERS WHERE email = '" + mail + "'");
-                datos.establecerlectura();
+                datos.establecerConsulta("update USERS set nombre=@nombre,apellido=@apellido,urlImagenPerfil=@url where id=@id");
 
-                if (datos.Lector.Read())
-                {
-                    usu.Email = (string)datos.Lector["email"];
-                    datos.cerrarconexion();
-                    return true;
-                }
-                datos.cerrarconexion();
-                return false;
+                datos.setearparametros("@nombre", usuario.Nombre);
+                datos.setearparametros("@apellido", usuario.Apellido);
+                datos.setearparametros("@url", usuario.UrlImagenPerfil ?? (object)DBNull.Value);
+                datos.setearparametros("@id", usuario.Id);
+
+                datos.ejecutaraccion();
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-        }
-
-        public UserLog ingresar(UserLog Usuario)
-        {
-            AccesoADatos datos = new AccesoADatos();
-            UserLog user = new UserLog();
-
-            datos.establecerConsulta("SELECT id,email,pass,nombre,apellido,urlImagenPerfil,admin FROM USERS WHERE email=@email and pass=@pass");
-            datos.setearparametros("@email", Usuario.Email);
-            datos.setearparametros("@pass", Usuario.Contraseña);
-            datos.establecerlectura();
-
-
-            if (datos.Lector.Read())
-            {
-                user.Id = (int)datos.Lector["id"];
-                user.Email = (string)datos.Lector["email"];
-                user.Contraseña = (string)datos.Lector["pass"];
-
-                if (!(DBNull.Value.Equals(datos.Lector["nombre"])))
-                {
-                    user.Nombre = (string)datos.Lector["nombre"];
-                }
-
-                if (!(DBNull.Value.Equals(datos.Lector["apellido"])))
-                {
-                    user.Apellido = (string)datos.Lector["apellido"];
-                }
-
-
-                if (!(DBNull.Value.Equals(datos.Lector["urlImagenPerfil"])))
-                {
-                    user.UrlImagenPerfil = (string)datos.Lector["urlImagenPerfil"];
-                }
-                user.Admin = (bool)datos.Lector["admin"];
-
-            }
-
-            datos.cerrarconexion();
-            return user;
-        }
-
-        public UserLog traerimagen(string usuario)
-        {
-            AccesoADatos datos = new AccesoADatos();
-            UserLog user = new UserLog();
-
-            datos.establecerConsulta("SELECT email,pass,urlImagenPerfil FROM USERS WHERE email='" + usuario + "'");
-
-            datos.establecerlectura();
-
-
-            if (datos.Lector.Read())
-            {
-
-                user.Email = (string)datos.Lector["email"];
-                user.Contraseña = (string)datos.Lector["pass"];
-                if (!(DBNull.Value.Equals(datos.Lector["urlImagenPerfil"])))
-                {
-                    user.UrlImagenPerfil = (string)datos.Lector["urlImagenPerfil"];
-                }
-
-
-            }
-
-            datos.cerrarconexion();
-            return user;
-        }
-
-        public void Modificar(UserLog usuario)
-        {
-            AccesoADatos datos = new AccesoADatos();
-            datos.establecerConsulta("update USERS set nombre=@nombre,apellido=@apellido,urlImagenPerfil=@url where id=@id");
-
-            datos.setearparametros("@nombre", usuario.Nombre);
-            datos.setearparametros("@apellido", usuario.Apellido);
-            datos.setearparametros("@url", usuario.UrlImagenPerfil ?? (object)DBNull.Value);
-            datos.setearparametros("@id", usuario.Id);
-
-            datos.ejecutaraccion();
 
         }
 
-       
+
     }
 }

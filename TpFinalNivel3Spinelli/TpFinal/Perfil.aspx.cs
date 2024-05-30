@@ -15,32 +15,42 @@ namespace TpFinal
         protected void Page_Load(object sender, EventArgs e)
         {
             UserLog user = (UserLog)Session["User"];
-            if (!IsPostBack)
+            try
             {
-                if (Session["User"] != null)
+                if (!IsPostBack)
                 {
-                    txbEmail.Text = user.Email;
-                    txbEmail.Enabled = false;
-
-                    if (!string.IsNullOrEmpty(user.Nombre))
+                    if (Session["User"] != null)
                     {
-                        txbNombre.Text = user.Nombre;
+                        txbEmail.Text = user.Email;
+                        txbEmail.Enabled = false;
+
+                        if (!string.IsNullOrEmpty(user.Nombre))
+                        {
+                            txbNombre.Text = user.Nombre;
+                        }
+
+                        if (!string.IsNullOrEmpty(user.Apellido))
+                        {
+                            txbApellido.Text += user.Apellido;
+                        }
+
+                        if (!string.IsNullOrEmpty(user.UrlImagenPerfil))
+                        {
+                            imgPerfil.ImageUrl = "~/Images/ImagenPerfil/" + user.UrlImagenPerfil;
+                        }
+
+                        Session["uaser"] = user;
+
                     }
-
-                    if (!string.IsNullOrEmpty(user.Apellido))
-                    {
-                        txbApellido.Text += user.Apellido;
-                    }
-
-                    if (!string.IsNullOrEmpty(user.UrlImagenPerfil))
-                    {
-                        imgPerfil.ImageUrl = "~/Images/ImagenPerfil/" + user.UrlImagenPerfil;
-                    }
-
-                    Session["uaser"] = user;
-
                 }
             }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
+
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -75,7 +85,8 @@ namespace TpFinal
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

@@ -13,21 +13,29 @@ namespace TpFinal
         public bool reintentar { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            reintentar = false;
-            if (Session["Message"] != null)
+            try
             {
                 reintentar = false;
-                lblError.Text = Session["Message"].ToString();
-                Session.Remove("Message");
+                if (Session["Message"] != null)
+                {
+                    reintentar = false;
+                    lblError.Text = Session["Message"].ToString();
+                    Session.Remove("Message");
+                }
+
+                if (Session["Error"] != null)
+                {
+                    lblError.Text = Session["Error"].ToString();
+                    reintentar = true;
+                    Session.Remove("Error");
+                }
             }
-            
-            if (Session["Error"] != null)
+            catch (Exception ex)
             {
-                lblError.Text = Session["Error"].ToString();
-                reintentar = true;
-                Session.Remove("Error");
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
-            
         }
 
         protected void btnReintentar_Click(object sender, EventArgs e)

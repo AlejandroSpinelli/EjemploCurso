@@ -30,7 +30,7 @@
             </div>
             <div class="mb-3">
                 <asp:Label ID="lblPass" CssClass="fuente" runat="server" Text="Pass"></asp:Label>
-                <asp:TextBox ID="txbPass" CssClass="form form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txbPass" CssClass="form form-control" runat="server" TextMode="Password"></asp:TextBox>
             </div>
         </div>
     </div>

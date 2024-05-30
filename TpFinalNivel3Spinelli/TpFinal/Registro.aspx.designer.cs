@@ -33,6 +33,15 @@ namespace TpFinal
         protected global::System.Web.UI.WebControls.TextBox txbEmail;
 
         /// <summary>
+        /// Control lblEmailValido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmailValido;
+
+        /// <summary>
         /// Control lblPass.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,33 @@ namespace TpFinal
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbPass;
+
+        /// <summary>
+        /// Control lblPass2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPass2;
+
+        /// <summary>
+        /// Control txbPass2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbPass2;
+
+        /// <summary>
+        /// Control lblCorreoValido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCorreoValido;
 
         /// <summary>
         /// Control btnRegistrarse.

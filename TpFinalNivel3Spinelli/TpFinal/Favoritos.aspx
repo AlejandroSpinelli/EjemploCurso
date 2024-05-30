@@ -24,7 +24,9 @@
     <asp:Repeater runat="server" ID="repRepeater">
         <ItemTemplate>
             <div class="card" style="width: 18rem;">
-                <img src="<%#Eval("UrlImagen") %>" class="card-img-top imagen" alt="<%#Eval("Nombre")%>">
+                <img src="<%#Eval("UrlImagen") %>" class="card-img-top imagen" id="imagencita" alt="<%#Eval("Nombre")%>" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20191026/ourmid/pngtree-shopping-basket-icon-png-image_1871519.jpg';" />
+
+                <%--<img src="<%#Eval("UrlImagen") %>" class="card-img-top imagen" alt="<%#Eval("Nombre")%>">--%>
                 <div class="card-body">
                     <h5 class="card-title"><%#Eval("Nombre") %></h5>
                     <p class="card-text"><%#Eval("Descripcion") %></p>

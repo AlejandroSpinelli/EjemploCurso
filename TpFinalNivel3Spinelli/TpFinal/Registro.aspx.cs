@@ -11,26 +11,60 @@ using System.Web.UI.WebControls;
 namespace TpFinal
 {
     public partial class Registro : System.Web.UI.Page
-    {
+    {   public bool validoUser {  get; set; }
+        public bool validoPass {  get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            if (!IsPostBack)
+            {
+                validoUser = false;
+                validoPass = false;
+            }
         }
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            LoginNegocio negocio = new LoginNegocio();
-            UserLog user = new UserLog();
-            user.Email= txbEmail.Text;
-            user.Contraseña=txbPass.Text;
+            try
+            {
+                LoginNegocio negocio = new LoginNegocio();
+                UserLog user = new UserLog();
+                if (txbEmail.Text.Contains("@") && txbEmail.Text.Contains(".com"))
+                {
+                    user.Email = txbEmail.Text;
+                }
+                else
+                {
+                    validoUser = true;
+                    return;
+                }
 
-            negocio.registrar(user);
+                if (txbPass.Text == txbPass2.Text && !string.IsNullOrEmpty(txbPass.Text))
+                {
+                    user.Contraseña = txbPass.Text;
+                }
+                else
+                {
+                    validoPass = true;
+                    return;
+                }
+                
+
+                negocio.registrar(user);
 
 
-            //Falta resolver el tema del correo electronico
-            string message = "Usuario registrado con exito,logueate!";
-            Session.Add("message", message);
-            Response.Redirect("Error.aspx", false);
+                //Falta resolver el tema del correo electronico
+
+                string message = "Usuario registrado con exito,logueate!";
+                Session.Add("message", message);
+                Response.Redirect("Error.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

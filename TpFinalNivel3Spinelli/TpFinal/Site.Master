@@ -22,7 +22,7 @@
 
     <style>
         body {
-            background-image: url('https://i.ibb.co/zmKVy9V/vector-ecommerce-online-shopping-seamless-background-pattern.png');
+            background-image: url('https://i.im.ge/2024/05/31/KU1EFX.fondo-2.png');
             background-size: cover;
             background-position: center;
         }
@@ -43,10 +43,11 @@
         <div>
 
             <div class="container-lg">
+                <img src="https://i.im.ge/2024/05/31/KUOOiy.3.png" class="img-fluid"  alt="Cabecera" />
 
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">MARKET</a>
+                        <%--<a class="navbar-brand" href="#">MARKET</a>--%>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>

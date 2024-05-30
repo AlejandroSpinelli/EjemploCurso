@@ -15,8 +15,6 @@ namespace TpFinal
         public bool mostrarEliminar { get; set; }
         public bool mostrarComandos { get; set; }
 
-        //Articulo seleccionado;
-
         CategoriaNegocio negocioCategoria = new CategoriaNegocio();
         List<Categoria> categoria = new List<Categoria>();
         MarcaNegocio negocioMarca = new MarcaNegocio();
@@ -37,11 +35,6 @@ namespace TpFinal
                 }
                 mostrarModificar = false;
                 mostrarEliminar = false;
-
-
-
-
-                
 
                 if (!IsPostBack)
                 {
@@ -87,6 +80,7 @@ namespace TpFinal
             {
 
                 Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -150,6 +144,7 @@ namespace TpFinal
             {
 
                 Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -176,6 +171,7 @@ namespace TpFinal
             {
 
                 Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -230,8 +226,9 @@ namespace TpFinal
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex);
-                throw;
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

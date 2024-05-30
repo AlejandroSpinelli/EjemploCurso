@@ -20,32 +20,61 @@ namespace Negocio
 
         public AccesoADatos()
         {
-            conexion=new SqlConnection("server=.\\SQLEXPRESS;database=CATALOGO_WEB_DB;integrated security=true");
-            comando = new SqlCommand();
+            try
+            {
+                conexion = new SqlConnection("server=.\\SQLEXPRESS;database=CATALOGO_WEB_DB;integrated security=true");
+                comando = new SqlCommand();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void establecerConsulta(string consulta)
         {
-            comando.CommandType=System.Data.CommandType.Text;
-            comando.CommandText = consulta;
+            try
+            {
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = consulta;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void establecerlectura()
         {
-            comando.Connection = conexion;
-            conexion.Open();
-            lector = comando.ExecuteReader();
+            try
+            {
+                comando.Connection = conexion;
+                conexion.Open();
+                lector = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void cerrarconexion()
         {
-            if (Lector != null) 
-                Lector.Close();
-            conexion.Close();
+            try
+            {
+                if (Lector != null)
+                    Lector.Close();
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void ejecutaraccion()
-        {   comando.Connection = conexion;
+        {
+            comando.Connection = conexion;
             try
             {
                 conexion.Open();
@@ -53,25 +82,24 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public void setearparametros(string nombre,object valor)
+        public void setearparametros(string nombre, object valor)
         {
-            comando.Parameters.AddWithValue(nombre,valor);
+            comando.Parameters.AddWithValue(nombre, valor);
         }
 
         public int ejecutarAccionScalar()
         {
-            comando.Connection= conexion;
-            
+            comando.Connection = conexion;
+
             try
             {
                 conexion.Open();
                 return int.Parse(comando.ExecuteScalar().ToString());
-                
+
             }
             catch (Exception ex)
             {

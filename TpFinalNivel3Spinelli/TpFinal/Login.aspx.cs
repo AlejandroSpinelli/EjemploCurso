@@ -18,22 +18,30 @@ namespace TpFinal
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            LoginNegocio negocio = new LoginNegocio();
-            UserLog user = new UserLog();
-
-            user.Email = txbEmail.Text;
-            user.Contraseña = txbPass.Text;
-            
-            if (int.Parse(negocio.ingresar(user).Id.ToString()) != 0)
+            try
             {
-                user = negocio.ingresar(user);
-                Session.Add("User", user);
-                Response.Redirect("default.aspx", false);
+                LoginNegocio negocio = new LoginNegocio();
+                UserLog user = new UserLog();
 
+                user.Email = txbEmail.Text;
+                user.Contraseña = txbPass.Text;
+
+                if (int.Parse(negocio.ingresar(user).Id.ToString()) != 0)
+                {
+                    user = negocio.ingresar(user);
+                    Session.Add("User", user);
+                    Response.Redirect("default.aspx", false);
+
+                }
+                else
+                {
+                    Session.Add("Error", "Ususario o contraseña incorrectos, vuelve a intentarlo");
+                    Response.Redirect("Error.aspx", false);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Session.Add("Error", "Ususario o contraseña incorrectos, vuelve a intentarlo");
+                Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx", false);
             }
         }
