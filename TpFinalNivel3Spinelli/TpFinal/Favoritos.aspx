@@ -38,4 +38,12 @@
             </div>
         </ItemTemplate>
     </asp:Repeater>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-4">
+            <div class="mb-3">
+                <asp:Button ID="btnVolver" runat="server" CssClass="btn btn-primary" OnClick="btnVolver_Click" Text="Regresar" />
+            </div>
+        </div>
+    </div>
 </asp:Content>

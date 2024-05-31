@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h2>Registrate</h2>
+    <h2>Regístrate</h2>
 
     <style>
         .fuente {
@@ -41,13 +41,24 @@
             <div class="mb-3">
                 <asp:Label ID="lblPass" CssClass="fuente" runat="server" Text="Password"></asp:Label>
                 <asp:TextBox ID="txbPass" CssClass="form form-control" runat="server" TextMode="Password"></asp:TextBox>
+                <asp:Label ID="lblValidaciones" runat="server" Text="La contraseña debe contener como mínimo:"></asp:Label>
+                <br />
+                <asp:Label ID="lblDigitos" runat="server" Text="8 dígitos"></asp:Label>
+                <br />
+                <asp:Label ID="lblMayuscula" runat="server" Text="Mayúscula"></asp:Label>
+                <br />
+                <asp:Label ID="lblMinuscula" runat="server" Text="Minúscula"></asp:Label>
+                <br />
+                <asp:Label ID="lblNumeros" runat="server" Text="Números"></asp:Label>
+                <br />
+                <asp:Label ID="lblCaracter" runat="server" Text="Caracter especial (ej:!,@,*)"></asp:Label>
             </div>
             <div class="mb-3">
                 <asp:Label ID="lblPass2" CssClass="fuente" runat="server" Text="Repita el Password"></asp:Label>
                 <asp:TextBox ID="txbPass2" CssClass="form form-control" runat="server" TextMode="Password"></asp:TextBox>
                 <%if (validoPass)
                     {  %>
-                <asp:Label ID="lblCorreoValido" runat="server" Text="Las contraseñas no son iguales" CssClass="color"></asp:Label>
+                <asp:Label ID="lblCorreoValido" runat="server" Text="Las contraseñas no son iguales o no son validas" CssClass="color"></asp:Label>
                 <%} %>
             </div>
         </div>

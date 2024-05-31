@@ -27,7 +27,7 @@
         <div class="col-2"></div>
         <div class="col-4">
             <div class="mb-3">
-                <asp:Label ID="lblFiltroRapido" CssClass="fuente" runat="server" Text="Filtro Rapido"></asp:Label>
+                <asp:Label ID="lblFiltroRapido" CssClass="fuente" runat="server" Text="Filtro rápido"></asp:Label>
                 <asp:TextBox ID="txbFiltroRapido" CssClass="form form-control" OnTextChanged="txbFiltroRapido_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
                 <asp:CheckBox ID="chbFiltroAvanzado" CssClass="form" Text="Activar filtro Avanzado" OnCheckedChanged="chbFiltroAvanzado_CheckedChanged" AutoPostBack="true" runat="server" />
             </div>
