@@ -23,6 +23,7 @@ namespace Negocio
             try
             {
                 conexion = new SqlConnection("server=.\\SQLEXPRESS;database=CATALOGO_WEB_DB;integrated security=true");
+                //conexion = new SqlConnection("workstation id=CATALOGO_WEB_DB_ALECITO.mssql.somee.com;packet size=4096;user id=Alecito_SQLLogin_1;pwd=ttey8ptyla;data source=CATALOGO_WEB_DB_ALECITO.mssql.somee.com;persist security info=False;initial catalog=CATALOGO_WEB_DB_ALECITO;TrustServerCertificate=True");
                 comando = new SqlCommand();
             }
             catch (Exception ex)

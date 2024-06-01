@@ -54,6 +54,8 @@
             <div class="mb-3">
                 <asp:Label ID="lblImagen" CssClass="fuente" runat="server" Text="Imágen"></asp:Label>
                 <input type="file" id="txtImagen" runat="server" class="form-control" />
+
+
                 <br />
                 <asp:Image ID="imgArticulo" CssClass="imagen img-fluid" ImageUrl="https://static.vecteezy.com/system/resources/previews/000/628/941/non_2x/shopping-basket-icon-vector.jpg" runat="server" />
             </div>
@@ -61,36 +63,34 @@
         <div class="col-2"></div>
     </div>
 
-    <asp:UpdatePanel runat="server">
-        <ContentTemplate>
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <div class="mb-3">
-                        <asp:Button ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-primary" runat="server" Text="Agregar" />
-                        <a href="Default.aspx">Cancelar</a>
-                        <%if (mostrarComandos)
-                            {  %>
-                        <asp:Button ID="btnModificar" CssClass="btn btn-warning" OnClick="btnModificar_Click1" runat="server" Text="Modificar" />
-                        <%} %>
-                        <%if (mostrarModificar)
-                            { %>
-                        <asp:CheckBox ID="chbmodificar" Text="Marque el Check si quiere modificar" runat="server" />
-                        <asp:Button ID="btnModificarValidado" CssClass="btn btn-primary" OnClick="btnModificarValidado_Click" runat="server" Text="Modificar" />
-                        <%}%>
-                        <%if (mostrarComandos)
-                            {  %>
-                        <asp:Button ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger" runat="server" Text="Eliminar" />
-                        <%} %>
-                        <%if (mostrarEliminar)
-                            {  %>
-                        <asp:CheckBox ID="chbeliminar" Text="Marque el Check para eliminar" runat="server" />
-                        <asp:Button ID="btnEliminarValidado" OnClick="btnEliminarValidado_Click" CssClass="btn btn-primary" runat="server" Text="Eliminar" />
-                        <%}%>
-                    </div>
-                </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="mb-3">
+                <asp:Button ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-primary" runat="server" Text="Agregar" />
+                <a href="Default.aspx">Cancelar</a>
+                <%if (mostrarComandos)
+                    {  %>
+                <asp:Button ID="btnModificar" CssClass="btn btn-warning" OnClick="btnModificar_Click1" runat="server" Text="Modificar" />
+                <%} %>
+                <%if (mostrarModificar)
+                    { %>
+                <asp:CheckBox ID="chbmodificar" Text="Marque el Check si quiere modificar" runat="server" />
+                <asp:Button ID="btnModificarValidado" CssClass="btn btn-primary" OnClick="btnModificarValidado_Click" runat="server" Text="Modificar" />
+                <%}%>
+                <%if (mostrarComandos)
+                    {  %>
+                <asp:Button ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger" runat="server" Text="Eliminar" />
+                <%} %>
+                <%if (mostrarEliminar)
+                    {  %>
+                <asp:CheckBox ID="chbeliminar" Text="Marque el Check para eliminar" runat="server" />
+                <asp:Button ID="btnEliminarValidado" OnClick="btnEliminarValidado_Click" CssClass="btn btn-primary" runat="server" Text="Eliminar" />
+                <%}%>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+        </div>
+    </div>
+
 
 </asp:Content>

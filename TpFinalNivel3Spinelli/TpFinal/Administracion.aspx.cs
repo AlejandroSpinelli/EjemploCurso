@@ -23,7 +23,7 @@ namespace TpFinal
                 dgvAdministracion.DataSource = listaArticulos;
                 dgvAdministracion.DataBind();
 
-                if (IsPostBack)
+                if (IsPostBack && chbFiltroAvanzado.Checked)
                 {
                     activarfiltro = true;
                 }
@@ -49,7 +49,7 @@ namespace TpFinal
             try
             {
                 string id = dgvAdministracion.SelectedDataKey.Value.ToString();
-                Response.Redirect("Edicion.aspx?Id=" + id);
+                Response.Redirect("Edicion.aspx?Id=" + id,false);
             }
             catch (Exception ex)
             {

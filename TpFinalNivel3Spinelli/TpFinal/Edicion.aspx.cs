@@ -22,66 +22,71 @@ namespace TpFinal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+                try
                 {
-                    mostrarComandos = true;
-                    btnAgregar.Enabled = false;
+                    if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+                    {
+                        mostrarComandos = true;
+                        btnAgregar.Enabled = false;
+                    }
+                    else
+                    {
+                        mostrarComandos = false;
+                    }
+                    mostrarModificar = false;
+                    mostrarEliminar = false;
+
+                    if (!IsPostBack)
+                    {
+                        marcas = negocioMarca.listar();
+                        ddlMarca.DataSource = marcas;
+                        ddlMarca.DataValueField = "Id";
+                        ddlMarca.DataTextField = "Descripcion";
+                        ddlMarca.DataBind();
+
+                        categoria = negocioCategoria.listar();
+                        ddlCategoria.DataSource = categoria;
+                        ddlCategoria.DataValueField = "Id";
+                        ddlCategoria.DataTextField = "Descripcion";
+                        ddlCategoria.DataBind();
+                    }
+
+                    string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+
+                    if (!IsPostBack && !string.IsNullOrEmpty(id))
+                    {
+
+                        ArticulosNegocio negocio = new ArticulosNegocio();
+                        Articulo seleccionado = new Articulo();
+                        seleccionado = (negocio.listar(id))[0];
+                        Session.Add("Seleccionado", seleccionado);
+
+
+                        txbNombre.Text = seleccionado.Nombre;
+                        txbCodigo.Text = seleccionado.Codigo;
+                        txbDescripcion.Text = seleccionado.Descripcion;
+                        txbPrecio.Text = seleccionado.Precio.ToString();
+                        imgArticulo.ImageUrl = seleccionado.UrlImagen != null ? seleccionado.UrlImagen : "";
+
+                        ddlCategoria.SelectedValue = seleccionado.IdCategoria.ToString();
+                        ddlMarca.SelectedValue = seleccionado.IdMarca.ToString();
+
+
+                    }
+
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    mostrarComandos = false;
+
+                    Session.Add("Error", ex.ToString());
+                    Response.Redirect("Error.aspx", false);
                 }
-                mostrarModificar = false;
-                mostrarEliminar = false;
-
-                if (!IsPostBack)
-                {
-                    marcas = negocioMarca.listar();
-                    ddlMarca.DataSource = marcas;
-                    ddlMarca.DataValueField = "Id";
-                    ddlMarca.DataTextField = "Descripcion";
-                    ddlMarca.DataBind();
-
-                    categoria = negocioCategoria.listar();
-                    ddlCategoria.DataSource = categoria;
-                    ddlCategoria.DataValueField = "Id";
-                    ddlCategoria.DataTextField = "Descripcion";
-                    ddlCategoria.DataBind();
-                }
-
-                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-
-                if (!IsPostBack && !string.IsNullOrEmpty(id))
-                {
-
-                    ArticulosNegocio negocio = new ArticulosNegocio();
-                    Articulo seleccionado = new Articulo();
-                    seleccionado = (negocio.listar(id))[0];
-                    Session.Add("Seleccionado",seleccionado );
-                    
-
-                    txbNombre.Text = seleccionado.Nombre;
-                    txbCodigo.Text = seleccionado.Codigo;
-                    txbDescripcion.Text = seleccionado.Descripcion;
-                    txbPrecio.Text = seleccionado.Precio.ToString();
-                    imgArticulo.ImageUrl = seleccionado.UrlImagen != null ? seleccionado.UrlImagen : "";
-
-                    ddlCategoria.SelectedValue = seleccionado.IdCategoria.ToString();
-                    ddlMarca.SelectedValue = seleccionado.IdMarca.ToString();
-
-
-                }
-
-
             }
-            catch (Exception ex)
-            {
 
-                Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx", false);
-            }
+
         }
 
 
@@ -101,7 +106,7 @@ namespace TpFinal
             {
                 if (chbmodificar.Checked)
                 {
-                    
+
                     ArticulosNegocio negocio = new ArticulosNegocio();
                     Articulo seleccionado = (Articulo)Session["seleccionado"];
                     if (!string.IsNullOrEmpty(txbCodigo.Text))
@@ -216,6 +221,18 @@ namespace TpFinal
 
 
 
+
+                Session.Add("PostedFile", txtImagen.PostedFile.FileName);
+
+                if (!string.IsNullOrEmpty(Session["PostedFile"].ToString()))
+                {
+                    string ruta = Server.MapPath("./Images/ImagenArticulo/");
+                    txtImagen.PostedFile.SaveAs(ruta + "IMGArticulo-" + seleccionado.Codigo + ".jpg");
+
+                    seleccionado.UrlImagen = "IMGArticulo-" + seleccionado.Codigo + ".jpg";
+                }
+
+
                 //Falta agregar lo de la imagen
 
                 if (string.IsNullOrEmpty(Request.QueryString["id"]))
@@ -231,5 +248,7 @@ namespace TpFinal
                 Response.Redirect("Error.aspx", false);
             }
         }
+
+
     }
 }

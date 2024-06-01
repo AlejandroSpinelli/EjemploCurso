@@ -121,7 +121,7 @@ namespace Negocio
 
                 datos.setearparametros("@Codigo", Articulo.Codigo);
                 datos.setearparametros("@Nombre", Articulo.Nombre);
-                datos.setearparametros("@Descripcion", Articulo.Descripcion);
+                datos.setearparametros("@Descripcion", Articulo.Descripcion != null ? Articulo.Descripcion : (object)DBNull.Value);
                 datos.setearparametros("@ImagenUrl", Articulo.UrlImagen != null ? Articulo.UrlImagen : (object)DBNull.Value);
                 datos.setearparametros("@IdCategoria", Articulo.categoria.Id);
                 datos.setearparametros("@IdMarca", Articulo.marca.Id);
